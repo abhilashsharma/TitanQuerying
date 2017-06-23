@@ -1,8 +1,4 @@
 package in.dream_lab.goffish.Gremlin;
-import java.util.HashSet;
-
-import org.apache.commons.configuration.BaseConfiguration;
-
 import com.thinkaurelius.titan.core.TitanEdge; 
 import com.thinkaurelius.titan.core.TitanFactory; 
 import com.thinkaurelius.titan.core.TitanGraph;
@@ -17,8 +13,7 @@ import com.tinkerpop.pipes.branch.LoopPipe.LoopBundle;
 public class BFSQuery { 
   
   private TitanGraph titanGraph = null; 
-  private BaseConfiguration conf;
-  private HashSet<Integer> vistedNodes;
+   
   public static void main(String args[]) { 
 //   GraphDatabase graph = new TitanGraphDatabase(); 
 //   graph.createGraphForMassiveLoad(GraphDatabaseBenchmark.TITANDB_PATH); 
@@ -26,29 +21,24 @@ public class BFSQuery {
 //   graph.shutdownMassiveGraph(); 
     
    BFSQuery titanQuery = new BFSQuery(); 
-//   titanQuery.TestQuery();
+   titanQuery.findNeighborsOfAllNodes();
   } 
    
-  private void TestQuery() {
-    // TODO Auto-generated method stub
-    
-  }
-
   public BFSQuery(TitanGraph titanGraph) { 
    this.titanGraph = titanGraph; 
   } 
    
   public BFSQuery() { 
-        conf = new BaseConfiguration();
-        conf.setProperty("storage.backend","cassandra");
-        conf.setProperty("storage.cassandra.keyspace","recreated");
-        conf.setProperty("storage.connection-timeout","5000000");
-        conf.setProperty("storage.setup-wait","2000000");
-        conf.setProperty("index.search.backend","elasticsearch");
-        conf.setProperty("storage.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15");
-        conf.setProperty("index.search.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15");
-        conf.setProperty("cache.db-cache","true");
-        titanGraph = TitanFactory.open(conf) ;
+   this.titanGraph = TitanFactory.build() 
+     .set("storage.backend","cassandra") 
+     .set("storage.cassandra.keyspace","recreated") 
+     .set("storage.connection-timeout","5000000")
+     .set("storage.setup-wait","2000000")
+     .set("index.search.backend","elasticsearch")
+     .set("storage.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15")
+     .set("index.search.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15")
+     .set("cache.db-cache","true")
+     .open(); 
   } 
    
  
