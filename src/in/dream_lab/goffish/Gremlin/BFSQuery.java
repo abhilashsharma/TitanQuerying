@@ -26,7 +26,7 @@ public class BFSQuery {
 //   graph.shutdownMassiveGraph(); 
     
    BFSQuery titanQuery = new BFSQuery(); 
-   titanQuery.TestQuery();
+//   titanQuery.TestQuery();
   } 
    
   private void TestQuery() {
