@@ -123,6 +123,12 @@
     <artifactId>elasticsearch</artifactId>
     <version>1.4.2</version>
 </dependency>
+<dependency>
+    <groupId>com.thinkaurelius.titan</groupId>
+    <artifactId>titan-es</artifactId>
+    <version>0.5.4</version>
+    <scope>test</scope>
+</dependency>
 		
              
     
