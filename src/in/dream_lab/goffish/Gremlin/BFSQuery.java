@@ -16,6 +16,7 @@ public class BFSQuery {
   
   private StandardTitanGraph titanGraph = null; 
   private BaseConfiguration conf;
+  
   public static void main(String args[]) { 
 //   GraphDatabase graph = new TitanGraphDatabase(); 
 //   graph.createGraphForMassiveLoad(GraphDatabaseBenchmark.TITANDB_PATH); 
@@ -27,6 +28,9 @@ public class BFSQuery {
   } 
    
   
+  
+
+
   public BFSQuery(StandardTitanGraph titanGraph) { 
    this.titanGraph = titanGraph; 
   } 
@@ -45,9 +49,11 @@ public class BFSQuery {
   } 
    
  
-  public void TestQuery(){
+  private void TestQuery() {
+    // TODO Auto-generated method stub
     
   }
+  
   @SuppressWarnings("unused") 
   public void findNeighborsOfAllNodes() { 
    for (Vertex v : titanGraph.getVertices()) { 
@@ -56,7 +62,7 @@ public class BFSQuery {
    } 
   } 
    
-   
+
 
    
  }
@@ -80,4 +86,3 @@ g = TitanFactory.open(conf);
 /*
  * titanGraph = TitanFactory.build().set("storage.backend","cassandra").set("storage.cassandra.keyspace","recreated").set("storage.connection-timeout","5000000").set("storage.setup-wait","2000000").set("index.search.backend","elasticsearch").set("storage.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15").set("index.search.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15").set("cache.db-cache","true").open(); 
  */
-*/
