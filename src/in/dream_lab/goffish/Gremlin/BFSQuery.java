@@ -11,7 +11,6 @@ import com.tinkerpop.pipes.PipeFunction;
 import com.tinkerpop.pipes.branch.LoopPipe;
 import com.tinkerpop.pipes.branch.LoopPipe.LoopBundle; 
 import com.thinkaurelius.titan.graphdb.database.StandardTitanGraph;
-import com.thinkaurelius.titan.diskstorage.es.ElasticSearchIndex;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
