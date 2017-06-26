@@ -119,15 +119,11 @@
     <artifactId>cassandra-all</artifactId>
     <version>2.0.15</version>
 </dependency>
-<dependency>
-    <groupId>org.elasticsearch</groupId>
-    <artifactId>elasticsearch</artifactId>
-    <version>1.4.2</version>
-</dependency>
+
 <dependency>
     <groupId>com.thinkaurelius.titan</groupId>
     <artifactId>titan-es</artifactId>
-    <version>0.4.1</version>
+    <version>0.5.4</version>
     <scope>test</scope>
 </dependency>
 		
