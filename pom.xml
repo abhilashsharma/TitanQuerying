@@ -106,6 +106,7 @@
 			<artifactId>titan-core</artifactId>
 			<version>0.5.4</version>
 		</dependency>
+		
 		<!-- Titan DB Cassandra -->
 		<dependency>
 			<groupId>com.thinkaurelius.titan</groupId>
@@ -130,11 +131,6 @@
     <scope>test</scope>
 </dependency>
 		
-             
-    
-
-	
-	
   </dependencies>
   
 </project>
