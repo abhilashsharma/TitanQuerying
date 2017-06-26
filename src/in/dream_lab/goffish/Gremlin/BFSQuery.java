@@ -48,7 +48,7 @@ public class BFSQuery {
     conf.setProperty("storage.cassandra.keyspace","recreated");
     conf.setProperty("storage.connection-timeout","5000000");
     conf.setProperty("storage.setup-wait","2000000");
-    conf.setProperty("index.search.backend","elasticsearch");
+    conf.setProperty("index.search.backend","es");
     conf.setProperty("storage.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15");
     conf.setProperty("index.search.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15");
     conf.setProperty("cache.db-cache","true");
