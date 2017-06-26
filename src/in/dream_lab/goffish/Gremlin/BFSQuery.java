@@ -63,9 +63,9 @@ public class BFSQuery {
   }
   
   @SuppressWarnings("unused") 
-  public void bfsQuery(String key,Object value,int depth) {
+  public void bfsQuery(String key,Object value,final int depth) {
 
-    HashSet<Object> visitedSet=new HashSet<>();
+    final HashSet<Object> visitedSet=new HashSet<>();
     
     PipeFunction<Vertex, Boolean> bfsFilterFunction = new PipeFunction<Vertex, Boolean>() {
       public Boolean compute(Vertex i)
