@@ -74,7 +74,7 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
-       return (bundle.getLoops()< 3); 
+       return  true; 
       }
     };
     
