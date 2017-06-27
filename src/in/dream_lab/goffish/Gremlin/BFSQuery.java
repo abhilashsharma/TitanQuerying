@@ -28,7 +28,6 @@ public class BFSQuery {
 //   graph.createGraphForMassiveLoad(GraphDatabaseBenchmark.TITANDB_PATH); 
 //   graph.massiveModeLoading("./data/youtubeEdges.txt"); 
 //   graph.shutdownMassiveGraph(); 
-    
    BFSQuery titanQuery = new BFSQuery(); 
    titanQuery.bfsQuery("patid",4563712,3);
   } 
@@ -130,6 +129,7 @@ public class BFSQuery {
                     return bundle.getObject() == v2;
                 }
             }).path();
+    
     for (final List path : pipe) {
         System.out.println(path);
     }
