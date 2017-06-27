@@ -48,7 +48,7 @@ public class BFSQuery {
    while ((sCurrentLine = br.readLine()) != null) {
            System.out.println(sCurrentLine);
            String[] strs=sCurrentLine.trim().split(",");
-           String key=strs[0];
+           String key=strs[0].replaceAll("^\"|\"$", "");;
            int val=Integer.parseInt(strs[1]);
            int depth= Integer.parseInt(strs[2]);
            titanQuery.TestBfsQuery(key,val,depth);
@@ -58,9 +58,7 @@ public class BFSQuery {
      
    }
    
-   System.out.println("Testing:");
-   titanQuery.TestBfsQuery("patid",4125132,4);
-   
+  
   } 
    
   
