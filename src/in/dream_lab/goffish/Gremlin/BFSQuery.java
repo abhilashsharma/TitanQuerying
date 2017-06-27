@@ -87,7 +87,7 @@ public class BFSQuery {
       }
     };
     
-    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956).store(visitedSet).as("x").out().store(visitedSet).loop("x", whileFunction,emitFunction ).path();
+    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956).store(visitedSet).as("x").out().filter(filterFunction).store(visitedSet).loop("x", whileFunction,emitFunction ).path();
     while(pipe.hasNext()){
       Object o=  pipe.next();
       System.out.println(o.toString());
