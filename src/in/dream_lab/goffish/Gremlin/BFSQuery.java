@@ -60,6 +60,13 @@ public class BFSQuery {
   private void TestQuery() {
     // TODO Auto-generated method stub
     System.out.println("In Test Query");
+    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V();
+    while(pipe.hasNext()){
+      Vertex v= (Vertex) pipe.next();
+      System.out.println(v.toString());
+    }
+    
+    System.out.println("Exiting querying");
   }
   
   @SuppressWarnings("unused") 
