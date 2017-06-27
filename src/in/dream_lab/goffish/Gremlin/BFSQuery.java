@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.cassandra.thrift.Cassandra.AsyncProcessor.system_add_column_family;
 import org.apache.cassandra.utils.OutputHandler.SystemOutput;
 import org.apache.commons.configuration.BaseConfiguration;
 import org.apache.tools.ant.taskdefs.Exit;
@@ -86,8 +87,11 @@ public class BFSQuery {
        return !visitedSet.contains(v); 
       }
     };
-    
+    long t1= System.currentTimeMillis();
     GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).store(visitedSet).as("x").out().filter(filterFunction).store(visitedSet).loop("x", whileFunction,emitFunction ).path();
+    System.out.println("Time: " + (System.currentTimeMillis()-t1));
+    
+    
     while(pipe.hasNext()){
       Object o=  pipe.next();
       System.out.println(o.toString());
