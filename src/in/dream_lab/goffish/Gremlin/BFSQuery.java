@@ -58,6 +58,8 @@ public class BFSQuery {
      
    }
    
+   System.out.println("Testing:");
+   titanQuery.TestBfsQuery("patid",4125132,4);
    
   } 
    
