@@ -11,6 +11,9 @@ import com.tinkerpop.pipes.PipeFunction;
 import com.tinkerpop.pipes.branch.LoopPipe;
 import com.tinkerpop.pipes.branch.LoopPipe.LoopBundle; 
 import com.thinkaurelius.titan.graphdb.database.StandardTitanGraph;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -31,7 +34,24 @@ public class BFSQuery {
 //   graph.createGraphForMassiveLoad(GraphDatabaseBenchmark.TITANDB_PATH); 
 //   graph.massiveModeLoading("./data/youtubeEdges.txt"); 
 //   graph.shutdownMassiveGraph(); 
-   BFSQuery titanQuery = new BFSQuery(); 
+   BFSQuery titanQuery = new BFSQuery();
+   try
+   {
+   String FILENAME="/home/abhilash/BFsQueryPatid.txt";
+   FileReader fr = new FileReader(FILENAME);
+   BufferedReader br = new BufferedReader(fr);
+
+   String sCurrentLine;
+
+   br = new BufferedReader(new FileReader(FILENAME));
+
+   while ((sCurrentLine = br.readLine()) != null) {
+           System.out.println(sCurrentLine);
+   }
+   
+   }catch(Exception e){
+     
+   }
    titanQuery.TestBfsQuery("patid",4564956,3);
    
   } 
