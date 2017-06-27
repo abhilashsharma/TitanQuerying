@@ -47,12 +47,17 @@ public class BFSQuery {
 
    while ((sCurrentLine = br.readLine()) != null) {
            System.out.println(sCurrentLine);
+           String[] strs=sCurrentLine.trim().split(",");
+           String key=strs[0];
+           int val=Integer.parseInt(strs[1]);
+           int depth= Integer.parseInt(strs[2]);
+           titanQuery.TestBfsQuery(key,val,depth);
    }
    
    }catch(Exception e){
      
    }
-   titanQuery.TestBfsQuery("patid",4564956,3);
+   
    
   } 
    
