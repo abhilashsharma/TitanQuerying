@@ -119,7 +119,7 @@ public class BFSQuery {
     
     while(pipe.hasNext()){
       Object o=  pipe.next();
-      System.out.println(o.toString());
+      
     }
     
     System.out.println("Time: " + (System.currentTimeMillis()-t1));
