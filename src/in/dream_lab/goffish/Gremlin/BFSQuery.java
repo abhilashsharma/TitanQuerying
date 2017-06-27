@@ -78,10 +78,10 @@ public class BFSQuery {
       }
     };
     
-    PipeFunction<LoopBundle<Vertex>,Boolean> filterFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
+    PipeFunction<Vertex,Boolean> filterFunction = new PipeFunction<Vertex,Boolean>(){
 
       @Override
-      public Boolean compute(LoopBundle<Vertex> bundle) {
+      public Boolean compute(Vertex bundle) {
        return  true; 
       }
     };
