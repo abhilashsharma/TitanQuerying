@@ -31,7 +31,7 @@ public class BFSQuery {
 //   graph.massiveModeLoading("./data/youtubeEdges.txt"); 
 //   graph.shutdownMassiveGraph(); 
    BFSQuery titanQuery = new BFSQuery(); 
-   titanQuery.TestQuery();
+   titanQuery.TestBfsQuery("patid",4564956,3);
    
   } 
    
@@ -59,7 +59,7 @@ public class BFSQuery {
   } 
    
  
-  private void TestQuery() {
+  private void TestBfsQuery(String key,Object val,final int depth) {
     final HashSet<Object> visitedSet=new HashSet<>();
     // TODO Auto-generated method stub
     System.out.println("In Test Query");
@@ -68,7 +68,7 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
-       return (bundle.getLoops()< 3); 
+       return (bundle.getLoops()< depth); 
       }
     };
     PipeFunction<LoopBundle<Vertex>,Boolean> emitFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
@@ -87,7 +87,7 @@ public class BFSQuery {
       }
     };
     
-    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956).store(visitedSet).as("x").out().filter(filterFunction).store(visitedSet).loop("x", whileFunction,emitFunction ).path();
+    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).store(visitedSet).as("x").out().filter(filterFunction).store(visitedSet).loop("x", whileFunction,emitFunction ).path();
     while(pipe.hasNext()){
       Object o=  pipe.next();
       System.out.println(o.toString());
