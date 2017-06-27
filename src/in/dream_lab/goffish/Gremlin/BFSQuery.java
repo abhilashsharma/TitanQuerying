@@ -114,13 +114,15 @@ public class BFSQuery {
     };
     long t1= System.currentTimeMillis();
     GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).store(visitedSet).as("x").out().filter(filterFunction).store(visitedSet).loop("x", whileFunction,emitFunction ).path();
-    System.out.println("Time: " + (System.currentTimeMillis()-t1));
+    
     
     
     while(pipe.hasNext()){
       Object o=  pipe.next();
       System.out.println(o.toString());
     }
+    
+    System.out.println("Time: " + (System.currentTimeMillis()-t1));
     
     System.out.println("Exiting querying");
     for(Object o : visitedSet){
