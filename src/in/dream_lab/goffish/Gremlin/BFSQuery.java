@@ -18,6 +18,7 @@ import java.util.Set;
 
 import org.apache.cassandra.utils.OutputHandler.SystemOutput;
 import org.apache.commons.configuration.BaseConfiguration;
+import org.apache.tools.ant.taskdefs.Exit;
 
 public class BFSQuery { 
   
@@ -31,6 +32,7 @@ public class BFSQuery {
 //   graph.shutdownMassiveGraph(); 
    BFSQuery titanQuery = new BFSQuery(); 
    titanQuery.TestQuery();
+   
   } 
    
   
@@ -60,7 +62,14 @@ public class BFSQuery {
   private void TestQuery() {
     // TODO Auto-generated method stub
     System.out.println("In Test Query");
-    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956);
+    PipeFunction<LoopBundle<Vertex>,Boolean> whileFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
+
+      @Override
+      public Boolean compute(LoopBundle<Vertex> bundle) {
+       return (bundle.getLoops()< 3); 
+      }
+    };
+    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956).as("x").out().loop("x", whileFunction );
     while(pipe.hasNext()){
       Vertex v= (Vertex) pipe.next();
       System.out.println(v.toString());
