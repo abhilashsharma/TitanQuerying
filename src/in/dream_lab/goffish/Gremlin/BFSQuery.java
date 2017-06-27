@@ -94,6 +94,9 @@ public class BFSQuery {
     }
     
     System.out.println("Exiting querying");
+    for(Object o : visitedSet){
+      System.out.println(o.toString());
+    }
   }
   
   @SuppressWarnings("unused") 
