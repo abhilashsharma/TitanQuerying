@@ -60,7 +60,7 @@ public class BFSQuery {
   private void TestQuery() {
     // TODO Auto-generated method stub
     System.out.println("In Test Query");
-    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V();
+    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956);
     while(pipe.hasNext()){
       Vertex v= (Vertex) pipe.next();
       System.out.println(v.toString());
