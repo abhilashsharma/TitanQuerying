@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.cassandra.utils.OutputHandler.SystemOutput;
 import org.apache.commons.configuration.BaseConfiguration;
 
 public class BFSQuery { 
@@ -29,7 +30,7 @@ public class BFSQuery {
 //   graph.massiveModeLoading("./data/youtubeEdges.txt"); 
 //   graph.shutdownMassiveGraph(); 
    BFSQuery titanQuery = new BFSQuery(); 
-   titanQuery.bfsQuery("patid",4563712,3);
+   titanQuery.TestQuery();
   } 
    
   
@@ -58,7 +59,7 @@ public class BFSQuery {
  
   private void TestQuery() {
     // TODO Auto-generated method stub
-    
+    System.out.println("In Test Query");
   }
   
   @SuppressWarnings("unused") 
