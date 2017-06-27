@@ -69,7 +69,16 @@ public class BFSQuery {
        return (bundle.getLoops()< 3); 
       }
     };
-    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956).as("x").out().loop("x", whileFunction ).path();
+   
+    PipeFunction<LoopBundle<Vertex>,Boolean> emitFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
+
+      @Override
+      public Boolean compute(LoopBundle<Vertex> bundle) {
+       return (bundle.getLoops()< 3); 
+      }
+    };
+    
+    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956).as("x").out().loop("x", whileFunction,emitFunction ).path();
     while(pipe.hasNext()){
       Object o=  pipe.next();
       System.out.println(o.toString());
