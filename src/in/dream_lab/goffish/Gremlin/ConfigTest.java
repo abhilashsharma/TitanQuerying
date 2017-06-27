@@ -4,23 +4,27 @@ import org.apache.commons.configuration.BaseConfiguration;
 
 import com.thinkaurelius.titan.core.TitanFactory;
 import com.thinkaurelius.titan.core.TitanGraph;
+import com.tinkerpop.blueprints.Vertex;
+import com.tinkerpop.blueprints.impls.tg.TinkerGraph;
+import com.tinkerpop.blueprints.impls.tg.TinkerGraphFactory;
 
 public class ConfigTest {
 
   public static void main(String args[])
   {
-      BaseConfiguration conf = new BaseConfiguration();
-      conf.setProperty("storage.backend","cassandra");
-      conf.setProperty("storage.cassandra.keyspace","recreated");
-      conf.setProperty("storage.connection-timeout","5000000");
-      conf.setProperty("storage.setup-wait","2000000");
-      conf.setProperty("index.search.backend","elasticsearch");
-      conf.setProperty("storage.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15");
-      conf.setProperty("index.search.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15");
-      conf.setProperty("cache.db-cache","true");
+//      BaseConfiguration conf = new BaseConfiguration();
+//      conf.setProperty("storage.backend","cassandra");
+//      conf.setProperty("storage.cassandra.keyspace","recreated");
+//      conf.setProperty("storage.connection-timeout","5000000");
+//      conf.setProperty("storage.setup-wait","2000000");
+//      conf.setProperty("index.search.backend","elasticsearch");
+//      conf.setProperty("storage.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15");
+//      conf.setProperty("index.search.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15");
+//      conf.setProperty("cache.db-cache","true");
 
-      TitanGraph titanGraph = TitanFactory.open(conf);
+      TinkerGraph titanGraph = TinkerGraphFactory.createTinkerGraph();;
 
+        Iterable<Vertex> results = titanGraph.query().vertices();
 //      Vertex rash = titanGraph.addVertex(null);
 //      rash.setProperty("userId", 1);
 //      rash.setProperty("username", "rash");
