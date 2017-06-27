@@ -106,7 +106,7 @@ public class BFSQuery {
     };
     
     
-    GremlinPipeline pipe =new GremlinPipeline(titanGraph).V(key, value).as("x").out().filter(bfsFilterFunction).loop("x", whileFunction,emitFunction).path();
+    GremlinPipeline pipe =new GremlinPipeline(titanGraph).V(key, value).store(visitedSet).as("x").out().filter(bfsFilterFunction).loop("x", whileFunction,emitFunction).path();
     
     System.out.println(pipe.count());
 

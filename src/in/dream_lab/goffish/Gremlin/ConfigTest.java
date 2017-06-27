@@ -25,6 +25,10 @@ public class ConfigTest {
       TinkerGraph titanGraph = TinkerGraphFactory.createTinkerGraph();;
 
         Iterable<Vertex> results = titanGraph.query().vertices();
+        
+        for(Vertex v: results){
+          System.out.println(v.toString());
+        }
 //      Vertex rash = titanGraph.addVertex(null);
 //      rash.setProperty("userId", 1);
 //      rash.setProperty("username", "rash");
