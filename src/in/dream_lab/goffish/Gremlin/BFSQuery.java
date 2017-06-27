@@ -60,8 +60,10 @@ public class BFSQuery {
    
  
   private void TestQuery() {
+    final HashSet<Object> visitedSet=new HashSet<>();
     // TODO Auto-generated method stub
     System.out.println("In Test Query");
+    
     PipeFunction<LoopBundle<Vertex>,Boolean> whileFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
 
       @Override
@@ -69,7 +71,6 @@ public class BFSQuery {
        return (bundle.getLoops()< 3); 
       }
     };
-   
     PipeFunction<LoopBundle<Vertex>,Boolean> emitFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
 
       @Override
@@ -81,12 +82,12 @@ public class BFSQuery {
     PipeFunction<Vertex,Boolean> filterFunction = new PipeFunction<Vertex,Boolean>(){
 
       @Override
-      public Boolean compute(Vertex bundle) {
-       return  true; 
+      public Boolean compute(Vertex v) {
+       return !visitedSet.contains(v); 
       }
     };
     
-    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956).as("x").out().filter(filterFunction).loop("x", whileFunction,emitFunction ).path();
+    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956).store(visitedSet).as("x").out().store(visitedSet).filter(filterFunction).loop("x", whileFunction,emitFunction ).path();
     while(pipe.hasNext()){
       Object o=  pipe.next();
       System.out.println(o.toString());
