@@ -69,10 +69,10 @@ public class BFSQuery {
        return (bundle.getLoops()< 3); 
       }
     };
-    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956).as("x").out().loop("x", whileFunction );
+    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V("patid",4564956).as("x").out().loop("x", whileFunction ).path();
     while(pipe.hasNext()){
-      Vertex v= (Vertex) pipe.next();
-      System.out.println(v.toString());
+      Object o=  pipe.next();
+      System.out.println(o.toString());
     }
     
     System.out.println("Exiting querying");
