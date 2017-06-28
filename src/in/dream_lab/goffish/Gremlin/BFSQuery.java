@@ -37,28 +37,32 @@ public class BFSQuery {
 //   graph.massiveModeLoading("./data/youtubeEdges.txt"); 
 //   graph.shutdownMassiveGraph(); 
    BFSQuery titanQuery = new BFSQuery();
-   try
-   {
-   String FILENAME="/home/abhilash/BFsQueryPatid.txt";
-   FileReader fr = new FileReader(FILENAME);
-   BufferedReader br = new BufferedReader(fr);
-
-   String sCurrentLine;
-
-   br = new BufferedReader(new FileReader(FILENAME));
-
-   while ((sCurrentLine = br.readLine()) != null) {
-           System.out.println(sCurrentLine);
-           String[] strs=sCurrentLine.trim().split(",");
-           String key=strs[0].replaceAll("^\"|\"$", "");;
-           int val=Integer.parseInt(strs[1]);
-           int depth= Integer.parseInt(strs[2]);
-           titanQuery.BfsMultiQuery(key,val,depth);
-   }
+//   try
+//   {
+//   String FILENAME="/home/abhilash/BFsQueryPatid.txt";
+//   FileReader fr = new FileReader(FILENAME);
+//   BufferedReader br = new BufferedReader(fr);
+//
+//   String sCurrentLine;
+//
+//   br = new BufferedReader(new FileReader(FILENAME));
+//
+//   while ((sCurrentLine = br.readLine()) != null) {
+//           System.out.println(sCurrentLine);
+//           String[] strs=sCurrentLine.trim().split(",");
+//           String key=strs[0].replaceAll("^\"|\"$", "");;
+//           int val=Integer.parseInt(strs[1]);
+//           int depth= Integer.parseInt(strs[2]);
+//           titanQuery.BfsMultiQuery(key,val,depth);
+//   }
+//   
+//   }catch(Exception e){
+//     
+//   }
    
-   }catch(Exception e){
-     
-   }
+   
+   //Testing and Debugging
+   titanQuery.BfsMultiQuery("patid",4564956,3);
    
   
   } 
@@ -127,9 +131,9 @@ public class BFSQuery {
     System.out.println("Time: " + (System.currentTimeMillis()-t1));
     
     System.out.println("Exiting querying");
-    for(Object o : visitedSet){
-      System.out.println(o.toString());
-    }
+//    for(Object o : visitedSet){
+//      System.out.println(o.toString());
+//    }
   }
 
   private void BfsMultiQuery(String key,Object val,final int depth) {
