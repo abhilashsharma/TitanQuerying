@@ -186,7 +186,7 @@ public class BFSQuery {
     List bfsPathList = new GremlinPipeline(titanGraph).V(key,val).as("x").out().loop("x", whileFunction,emitFunction ).path().toList();
     
     System.out.println("Time: " + (System.currentTimeMillis()-t1));
-    
+    System.out.println("BFS Path Count:" + bfsPathList.size());
     System.out.println("Exiting querying");
 //    for(Object o : visitedSet){
 //      System.out.println(o.toString());
