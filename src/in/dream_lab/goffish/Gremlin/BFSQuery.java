@@ -147,23 +147,24 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
-        System.out.println("checking Path:" + bundle.getPath().toString());
+        
         Object rootVertex=bundle.getPath().get(0);
         Object currentVertex=bundle.getPath().get(bundle.getPath().size()-1);
+        System.out.println("checking Path:" + bundle.getPath().toString() + "," +((Vertex)currentVertex).getId());
         Boolean flag=true;
         BitSet rootVertexBitSet= visitedSet.get(rootVertex);
         if(rootVertexBitSet==null){
           rootVertexBitSet = new BitSet();
-          rootVertexBitSet.set((Integer)((Vertex)currentVertex).getProperty("patid"));
+          rootVertexBitSet.set((Integer)((Vertex)currentVertex).getId());
           visitedSet.put(rootVertex, rootVertexBitSet);
         }
         else{
-          boolean bit=rootVertexBitSet.get((Integer)((Vertex)currentVertex).getProperty("patid"));
+          boolean bit=rootVertexBitSet.get((Integer)((Vertex)currentVertex).getId());
           if(bit==true){
             flag=false;
           }
           else{
-            rootVertexBitSet.set((Integer)((Vertex)currentVertex).getProperty("patid"));
+            rootVertexBitSet.set((Integer)((Vertex)currentVertex).getId());
           }
         }
           
