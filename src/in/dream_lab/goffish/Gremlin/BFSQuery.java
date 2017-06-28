@@ -199,8 +199,11 @@ public class BFSQuery {
     
   //for non-lazy evaluation
     GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).as("x").out().V().loop("x", whileFunction,emitFunction ).path();
-    for(Object o:pipe){
-      System.out.println("Path:"+o.toString());
+    int count=0;
+    while(pipe.hasNext()){
+      Object o=  pipe.next();
+      System.out.println("Path:" + o.toString());
+      count++;
     }
     System.out.println("Time: " + (System.currentTimeMillis()-t1));
 //    System.out.println("BFS Path Count:" + bfsPathList.size());
