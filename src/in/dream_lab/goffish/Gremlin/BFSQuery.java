@@ -158,7 +158,7 @@ public class BFSQuery {
         if(rootVertexBitSet==null){
           rootVertexBitSet = new BitSet();
 
-//          System.out.println("setting:" + pseudoId + " ID:" + ((Vertex)currentVertex).getId());
+          System.out.println("setting ID:" + ((Vertex)currentVertex).getId());
           rootVertexBitSet.set(pseudoId);
           visitedSet.put(rootVertex, rootVertexBitSet);
         }
@@ -169,7 +169,7 @@ public class BFSQuery {
             flag=false;
           }
           else{
-//            System.out.println("setting:" + pseudoId + " ID" + ((Vertex)currentVertex).getId());
+            System.out.println("setting ID:" + ((Vertex)currentVertex).getId());
             rootVertexBitSet.set(pseudoId);
           }
         }
