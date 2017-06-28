@@ -181,7 +181,7 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
-       System.out.println("Emitted Path:" + bundle.getPath()); 
+       System.out.println("Emitted Path:" + bundle.getPath() + "," + bundle.getObject().getId()); 
        return true; 
       }
     };
