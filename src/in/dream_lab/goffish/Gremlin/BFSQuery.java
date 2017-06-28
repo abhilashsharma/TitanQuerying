@@ -171,7 +171,7 @@ public class BFSQuery {
             rootVertexBitSet.set(pseudoId);
           }
         }
-          
+         System.out.println("returning " + ((bundle.getLoops()< depth) && flag)); 
        return (bundle.getLoops()< depth) && flag; 
       }
     };
@@ -187,12 +187,14 @@ public class BFSQuery {
 //
 //      @Override
 //      public Boolean compute(Vertex v) {
-//       return !visitedSet.contains(v); 
+//       return ; 
 //      }
 //    };
+    
+    
     long t1= System.currentTimeMillis();
     //lazy evaluation
-//    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).as("x").out().loop("x", whileFunction,emitFunction ).path();
+    //GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).as("x").out().loop("x", whileFunction,emitFunction ).path();
     
   //for non-lazy evaluation
     List bfsMultiPathList = new GremlinPipeline(titanGraph).V(key,val).as("x").out().loop("x", whileFunction,emitFunction ).path().toList();
