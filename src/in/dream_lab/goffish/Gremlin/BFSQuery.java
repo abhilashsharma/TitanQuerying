@@ -150,7 +150,7 @@ public class BFSQuery {
       public Boolean compute(LoopBundle<Vertex> bundle) {
         
         Object rootVertex=bundle.getPath().get(0);
-        Object currentVertex=bundle.getPath().get(bundle.getPath().size()-1);
+        Object currentVertex=bundle.getObject();
         System.out.println("checking Path:" + bundle.getPath().toString() + "," +((Vertex)currentVertex).getId());
         Boolean flag=true;
         BitSet rootVertexBitSet= visitedSet.get(rootVertex);
