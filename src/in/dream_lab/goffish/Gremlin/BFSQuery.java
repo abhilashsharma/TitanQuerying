@@ -101,6 +101,9 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
+        Object rootVertex=bundle.getPath().get(0);
+        Object currentVertex=bundle.getPath().get(bundle.getPath().size()-1);
+        System.out.println("checking Path:" + bundle.getPath().toString() + "," +((Vertex)currentVertex).getId());
        return (bundle.getLoops()< depth); 
       }
     };
@@ -108,9 +111,6 @@ public class BFSQuery {
       
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
-        Object rootVertex=bundle.getPath().get(0);
-        Object currentVertex=bundle.getPath().get(bundle.getPath().size()-1);
-        System.out.println("checking Path:" + bundle.getPath().toString() + "," +((Vertex)currentVertex).getId());
        return  true; 
       }
     };
