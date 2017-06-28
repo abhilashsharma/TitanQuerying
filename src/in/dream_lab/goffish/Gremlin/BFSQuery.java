@@ -123,14 +123,14 @@ public class BFSQuery {
     GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).store(visitedSet).as("x").out().filter(filterFunction).store(visitedSet).loop("x", whileFunction,emitFunction ).path();
     
     
-    
+    int count=0;
     while(pipe.hasNext()){
       Object o=  pipe.next();
-      
+      count++;
     }
     
     System.out.println("Time: " + (System.currentTimeMillis()-t1));
-    
+    System.out.println("BFS Path Count:" + count);
     System.out.println("Exiting querying");
 //    for(Object o : visitedSet){
 //      System.out.println(o.toString());
