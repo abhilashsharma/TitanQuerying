@@ -63,6 +63,7 @@ public class BFSQuery {
    
    //Testing and Debugging
    titanQuery.BfsMultiQuery("patid",4564956,3);
+   titanQuery.TestBfsQuery("patid",4564956,3);
    
   
   } 
