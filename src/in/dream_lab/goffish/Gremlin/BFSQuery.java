@@ -151,24 +151,25 @@ public class BFSQuery {
         
         Object rootVertex=bundle.getPath().get(0);
         Object currentVertex=bundle.getObject();
-        System.out.println("checking Path:" + bundle.getPath().toString() +","+((Vertex)rootVertex).getId()+ "," +((Vertex)currentVertex).getId());
+        System.out.println("checking Path:" + bundle.getPath().toString() +","+((Vertex)rootVertex).getId()+ "," +((Vertex)bundle.getObject()).getId());
         Boolean flag=true;
         BitSet rootVertexBitSet= visitedSet.get(rootVertex);
+        int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
         if(rootVertexBitSet==null){
           rootVertexBitSet = new BitSet();
-          int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
-          System.out.println("setting:" + pseudoId + " ID:" + ((Vertex)currentVertex).getId());
+
+//          System.out.println("setting:" + pseudoId + " ID:" + ((Vertex)currentVertex).getId());
           rootVertexBitSet.set(pseudoId);
           visitedSet.put(rootVertex, rootVertexBitSet);
         }
         else{
-          int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
+          
           boolean bit=rootVertexBitSet.get(pseudoId);
           if(bit==true){
             flag=false;
           }
           else{
-            System.out.println("setting:" + pseudoId + " ID" + ((Vertex)currentVertex).getId());
+//            System.out.println("setting:" + pseudoId + " ID" + ((Vertex)currentVertex).getId());
             rootVertexBitSet.set(pseudoId);
           }
         }
