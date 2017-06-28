@@ -166,7 +166,7 @@ public class BFSQuery {
           }
         }
           
-       return (bundle.getLoops()< depth) && flag; 
+       return (bundle.getLoops()< depth+1) && flag; 
       }
     };
     PipeFunction<LoopBundle<Vertex>,Boolean> emitFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
