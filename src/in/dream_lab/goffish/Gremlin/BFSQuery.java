@@ -128,13 +128,6 @@ public class BFSQuery {
     //non-lazy evaluation
     List bfsPathList = new GremlinPipeline(titanGraph).V(key,val).store(visitedSet).as("x").out().filter(filterFunction).store(visitedSet).loop("x", whileFunction,emitFunction ).path().toList();
     
-//    int count=0;
-//    while(pipe.hasNext()){
-//      Object o=  pipe.next();
-//      System.out.println("Path:" + o.toString());
-//      count++;
-//    }
-    
     System.out.println("Time: " + (System.currentTimeMillis()-t1));
     
     System.out.println("BFS Path Count:" + bfsPathList.size());
@@ -142,9 +135,7 @@ public class BFSQuery {
       System.out.println("Path:" + o.toString());
     }
     System.out.println("Exiting querying");
-//    for(Object o : visitedSet){
-//      System.out.println(o.toString());
-//    }
+
   }
 
   private void BfsMultiQuery(String key,Object val,final int depth) {
@@ -203,18 +194,15 @@ public class BFSQuery {
     //lazy evaluation
 //    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).as("x").out().loop("x", whileFunction,emitFunction ).path();
     
-  //for lazy evaluation
-    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).as("x").out().loop("x", whileFunction,emitFunction ).path();
-    int count=0;
-    while(pipe.hasNext()){
-      Object o =  pipe.next();
-      System.out.println("Path:" + o.toString());
-      count++;
-    }
+  //for non-lazy evaluation
+    List bfsMultiPathList = new GremlinPipeline(titanGraph).V(key,val).as("x").out().loop("x", whileFunction,emitFunction ).path().toList();
     
     System.out.println("Time: " + (System.currentTimeMillis()-t1));
-//    System.out.println("BFS Path Count:" + bfsPathList.size());
+    System.out.println("BFS Path Count:" + bfsMultiPathList.size());
     
+    for(Object o: bfsMultiPathList){
+      System.out.println("Path: " + o.toString());
+    }
     System.out.println("Exiting querying");
 //    for(Object o : visitedSet){
 //      System.out.println(o.toString());
