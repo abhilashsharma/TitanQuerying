@@ -15,6 +15,7 @@ import com.thinkaurelius.titan.graphdb.database.StandardTitanGraph;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,6 +24,7 @@ import org.apache.cassandra.thrift.Cassandra.AsyncProcessor.system_add_column_fa
 import org.apache.cassandra.utils.OutputHandler.SystemOutput;
 import org.apache.commons.configuration.BaseConfiguration;
 import org.apache.tools.ant.taskdefs.Exit;
+import java.util.BitSet;
 
 public class BFSQuery { 
   
@@ -51,7 +53,7 @@ public class BFSQuery {
            String key=strs[0].replaceAll("^\"|\"$", "");;
            int val=Integer.parseInt(strs[1]);
            int depth= Integer.parseInt(strs[2]);
-           titanQuery.TestBfsQuery(key,val,depth);
+           titanQuery.BfsMultiQuery(key,val,depth);
    }
    
    }catch(Exception e){
@@ -129,6 +131,69 @@ public class BFSQuery {
       System.out.println(o.toString());
     }
   }
+
+  private void BfsMultiQuery(String key,Object val,final int depth) {
+    final HashMap<Object,BitSet> visitedSet=new HashMap<Object,BitSet>();
+    // TODO Auto-generated method stub
+    System.out.println("In Test Query");
+    
+    PipeFunction<LoopBundle<Vertex>,Boolean> whileFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
+
+      @Override
+      public Boolean compute(LoopBundle<Vertex> bundle) {
+        Object rootVertex=bundle.getPath().get(0);
+        Object currentVertex=bundle.getPath().get(bundle.getPath().size()-1);
+        Boolean flag=true;
+        BitSet rootVertexBitSet= visitedSet.get(rootVertex);
+        if(rootVertexBitSet==null){
+          rootVertexBitSet = new BitSet();
+          rootVertexBitSet.set((Integer)((Vertex)currentVertex).getProperty("patid"));
+          visitedSet.put(rootVertex, rootVertexBitSet);
+        }
+        else{
+          boolean bit=rootVertexBitSet.get((Integer)((Vertex)currentVertex).getProperty("patid"));
+          if(bit==true){
+            flag=false;
+          }
+          else{
+            rootVertexBitSet.set((Integer)((Vertex)currentVertex).getProperty("patid"));
+          }
+        }
+          
+       return (bundle.getLoops()< depth) && flag; 
+      }
+    };
+    PipeFunction<LoopBundle<Vertex>,Boolean> emitFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
+
+      @Override
+      public Boolean compute(LoopBundle<Vertex> bundle) {
+       return  true; 
+      }
+    };
+    
+//    PipeFunction<Vertex,Boolean> filterFunction = new PipeFunction<Vertex,Boolean>(){
+//
+//      @Override
+//      public Boolean compute(Vertex v) {
+//       return !visitedSet.contains(v); 
+//      }
+//    };
+    long t1= System.currentTimeMillis();
+    //lazy evaluation
+//    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).as("x").out().loop("x", whileFunction,emitFunction ).path();
+    
+  //for non-lazy evaluation
+    List bfsPathList = new GremlinPipeline(titanGraph).V(key,val).as("x").out().loop("x", whileFunction,emitFunction ).path().toList();
+    
+    System.out.println("Time: " + (System.currentTimeMillis()-t1));
+    
+    System.out.println("Exiting querying");
+//    for(Object o : visitedSet){
+//      System.out.println(o.toString());
+//    }
+  }
+
+  
   
   @SuppressWarnings("unused") 
   public void bfsQuery(String key,Object value,final int depth) {
