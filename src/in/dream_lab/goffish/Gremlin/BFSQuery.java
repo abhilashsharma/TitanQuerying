@@ -63,7 +63,7 @@ public class BFSQuery {
    
    //Testing and Debugging
    titanQuery.BfsMultiQuery("patid",4564956,3);
-   titanQuery.TestBfsQuery("patid",4564956,3);
+//   titanQuery.TestBfsQuery("patid",4564956,3);
    
   
   } 
@@ -151,7 +151,7 @@ public class BFSQuery {
         
         Object rootVertex=bundle.getPath().get(0);
         Object currentVertex=bundle.getObject();
-        System.out.println("checking Path:" + bundle.getPath().toString() + "," +((Vertex)currentVertex).getId());
+        System.out.println("checking Path:" + bundle.getPath().toString() +","+((Vertex)currentVertex).getId()+ "," +((Vertex)currentVertex).getId());
         Boolean flag=true;
         BitSet rootVertexBitSet= visitedSet.get(rootVertex);
         if(rootVertexBitSet==null){
