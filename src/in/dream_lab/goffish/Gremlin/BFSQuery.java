@@ -63,7 +63,7 @@ public class BFSQuery {
    
    //Testing and Debugging
    titanQuery.BfsMultiQuery("patid",4564956,3);
-   titanQuery.TestBfsQuery("patid",4564956,3);
+//   titanQuery.TestBfsQuery("patid",4564956,3);
    
   
   } 
@@ -155,16 +155,20 @@ public class BFSQuery {
         BitSet rootVertexBitSet= visitedSet.get(rootVertex);
         if(rootVertexBitSet==null){
           rootVertexBitSet = new BitSet();
-          rootVertexBitSet.set((Integer)((Vertex)currentVertex).getId());
+          int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
+          System.out.println("setting:" + pseudoId + " ID:" + ((Vertex)currentVertex).getId());
+          rootVertexBitSet.set(pseudoId);
           visitedSet.put(rootVertex, rootVertexBitSet);
         }
         else{
-          boolean bit=rootVertexBitSet.get((Integer)((Vertex)currentVertex).getId());
+          int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
+          boolean bit=rootVertexBitSet.get(pseudoId);
           if(bit==true){
             flag=false;
           }
           else{
-            rootVertexBitSet.set((Integer)((Vertex)currentVertex).getId());
+            System.out.println("setting:" + pseudoId + " ID" + ((Vertex)currentVertex).getId());
+            rootVertexBitSet.set(pseudoId);
           }
         }
           
