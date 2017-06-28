@@ -63,7 +63,7 @@ public class BFSQuery {
    
    //Testing and Debugging
    titanQuery.BfsMultiQuery("patid",4564956,3);
-//   titanQuery.TestBfsQuery("patid",4564956,3);
+   titanQuery.TestBfsQuery("patid",4564956,3);
    
   
   } 
@@ -105,9 +105,12 @@ public class BFSQuery {
       }
     };
     PipeFunction<LoopBundle<Vertex>,Boolean> emitFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
-
+      
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
+        Object rootVertex=bundle.getPath().get(0);
+        Object currentVertex=bundle.getPath().get(bundle.getPath().size()-1);
+        System.out.println("checking Path:" + bundle.getPath().toString() + "," +((Vertex)currentVertex).getId());
        return  true; 
       }
     };
