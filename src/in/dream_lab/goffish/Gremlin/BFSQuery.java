@@ -176,7 +176,7 @@ public class BFSQuery {
 //        }
 //         System.out.println("returning while" + (bundle.getLoops()< depth+1)); 
 //       return (bundle.getLoops()< depth+1);
-        return (bundle.getLoops()< depth);
+        return (bundle.getLoops()< depth && bundle.getObject()!=null);
       }
     };
     PipeFunction<LoopBundle<Vertex>,Boolean> emitFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
