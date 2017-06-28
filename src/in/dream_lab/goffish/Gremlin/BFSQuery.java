@@ -180,7 +180,16 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
-       return  true; 
+        boolean flag=true;
+        Object rootVertex=bundle.getPath().get(0);
+        Object currentVertex=bundle.getObject();
+        int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
+        BitSet rootVertexBitSet= visitedSet.get(rootVertex);
+        boolean bit=rootVertexBitSet.get(pseudoId);
+        if(bit==true){
+          flag=false;
+        }
+       return  flag; 
       }
     };
     
