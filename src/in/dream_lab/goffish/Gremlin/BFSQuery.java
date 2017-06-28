@@ -189,7 +189,7 @@ public class BFSQuery {
         if(bit==true){
           flag=false;
         }
-        System.out.println("emit:" + flag);
+        System.out.println(((Vertex)rootVertex).getId()+","+((Vertex)currentVertex).getId()+"   emit:" +flag);
        return  flag; 
       }
     };
