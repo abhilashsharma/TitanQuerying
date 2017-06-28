@@ -182,7 +182,7 @@ public class BFSQuery {
       public Boolean compute(LoopBundle<Vertex> bundle) {
         boolean flag=true;
         Object rootVertex=bundle.getPath().get(0);
-        Object currentVertex=bundle.getObject();
+        Object currentVertex=bundle.getPath().get(bundle.getPath().size()-1);;
         int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
         BitSet rootVertexBitSet= visitedSet.get(rootVertex);
         boolean bit=rootVertexBitSet.get(pseudoId);
