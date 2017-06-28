@@ -151,7 +151,7 @@ public class BFSQuery {
         
         Object rootVertex=bundle.getPath().get(0);
         Object currentVertex=bundle.getObject();
-        System.out.println("checking Path:" + bundle.getPath().toString() +","+((Vertex)rootVertex).getId()+ "," +((Vertex)bundle.getObject()).getId());
+        
         Boolean flag=true;
         BitSet rootVertexBitSet= visitedSet.get(rootVertex);
         int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
@@ -181,8 +181,32 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
-       System.out.println("Emitted Path:" + bundle.getPath() + "," + bundle.getObject().getId()); 
-       return true; 
+       System.out.println("Emitted Path:" + bundle.getPath() + "," + bundle.getObject().getId());
+       Object rootVertex=bundle.getPath().get(0);
+       Object currentVertex=bundle.getObject();
+       
+       Boolean flag=true;
+       BitSet rootVertexBitSet= visitedSet.get(rootVertex);
+       int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
+       if(rootVertexBitSet==null){
+         rootVertexBitSet = new BitSet();
+
+//         System.out.println("setting:" + pseudoId + " ID:" + ((Vertex)currentVertex).getId());
+         rootVertexBitSet.set(pseudoId);
+         visitedSet.put(rootVertex, rootVertexBitSet);
+       }
+       else{
+         
+         boolean bit=rootVertexBitSet.get(pseudoId);
+         if(bit==true){
+           flag=false;
+         }
+         else{
+//           System.out.println("setting:" + pseudoId + " ID" + ((Vertex)currentVertex).getId());
+           rootVertexBitSet.set(pseudoId);
+         }
+       }
+       return flag; 
       }
     };
     
