@@ -203,14 +203,15 @@ public class BFSQuery {
     //lazy evaluation
 //    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).as("x").out().loop("x", whileFunction,emitFunction ).path();
     
-  //for non-lazy evaluation
-    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).as("x").out().V().loop("x", whileFunction,emitFunction ).path();
+  //for lazy evaluation
+    GremlinPipeline pipe = new GremlinPipeline(titanGraph).V(key,val).as("x").out().loop("x", whileFunction,emitFunction ).path();
     int count=0;
     while(pipe.hasNext()){
-      Object o=  pipe.next();
+      Object o =  pipe.next();
       System.out.println("Path:" + o.toString());
       count++;
     }
+    
     System.out.println("Time: " + (System.currentTimeMillis()-t1));
 //    System.out.println("BFS Path Count:" + bfsPathList.size());
     
