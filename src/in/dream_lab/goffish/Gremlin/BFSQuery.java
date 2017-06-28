@@ -187,7 +187,7 @@ public class BFSQuery {
         int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
         BitSet rootVertexBitSet= visitedSet.get(rootVertex);
         boolean bit=rootVertexBitSet.get(pseudoId);
-        if(bit==false){
+        if(bit==true){
           flag=false;
         }
         System.out.println(((Vertex)rootVertex).getId()+","+((Vertex)currentVertex).getId()+"   emit:" +flag);
