@@ -189,6 +189,7 @@ public class BFSQuery {
         if(bit==true){
           flag=false;
         }
+        System.out.println("emit:" + flag);
        return  flag; 
       }
     };
@@ -217,10 +218,10 @@ public class BFSQuery {
     }
     System.out.println("Exiting querying");
     
-    BitSet bitSet= visitedSet.get(titanGraph.getVertex(1454592));
-    for (int i = bitSet.nextSetBit(0); i != -1; i = bitSet.nextSetBit(i + 1)) {
-      System.out.println("SetBit:" + i);
-  }
+//    BitSet bitSet= visitedSet.get(titanGraph.getVertex(1454592));
+//    for (int i = bitSet.nextSetBit(0); i != -1; i = bitSet.nextSetBit(i + 1)) {
+//      System.out.println("SetBit:" + i);
+//  }
 //    for(Object o : visitedSet){
 //      System.out.println(o.toString());
 //    }
