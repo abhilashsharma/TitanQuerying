@@ -166,7 +166,8 @@ public class BFSQuery {
           
           boolean bit=rootVertexBitSet.get(pseudoId);
           if(bit==true){
-            flag=false;
+            System.out.println("Loop found");
+            return false;
           }
           else{
             System.out.println("setting ID:" + ((Vertex)currentVertex).getId());
