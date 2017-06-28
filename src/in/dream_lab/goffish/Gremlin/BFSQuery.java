@@ -172,7 +172,7 @@ public class BFSQuery {
             rootVertexBitSet.set(pseudoId);
           }
         }
-         System.out.println("returning " + ((bundle.getLoops()< depth) && flag)); 
+         System.out.println("returning " + (bundle.getLoops()< depth)+","+ flag); 
        return (bundle.getLoops()< depth) && flag; 
       }
     };
