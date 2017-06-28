@@ -119,6 +119,7 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(Vertex v) {
+        System.out.println("returning " + !visitedSet.contains(v) );
        return !visitedSet.contains(v); 
       }
     };
