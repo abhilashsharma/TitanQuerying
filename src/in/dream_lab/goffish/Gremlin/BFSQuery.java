@@ -147,6 +147,7 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
+        System.out.println("checking Path:" + bundle.getPath().toString());
         Object rootVertex=bundle.getPath().get(0);
         Object currentVertex=bundle.getPath().get(bundle.getPath().size()-1);
         Boolean flag=true;
@@ -166,7 +167,7 @@ public class BFSQuery {
           }
         }
           
-       return (bundle.getLoops()< depth+1) && flag; 
+       return (bundle.getLoops()< depth) && flag; 
       }
     };
     PipeFunction<LoopBundle<Vertex>,Boolean> emitFunction = new PipeFunction<LoopBundle<Vertex>,Boolean>(){
