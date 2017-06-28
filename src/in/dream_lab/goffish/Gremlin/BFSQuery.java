@@ -126,6 +126,7 @@ public class BFSQuery {
     int count=0;
     while(pipe.hasNext()){
       Object o=  pipe.next();
+      System.out.println("Path:" + o.toString());
       count++;
     }
     
@@ -192,6 +193,9 @@ public class BFSQuery {
     
     System.out.println("Time: " + (System.currentTimeMillis()-t1));
     System.out.println("BFS Path Count:" + bfsPathList.size());
+    for(Object o:bfsPathList){
+      System.out.println("Path:"+o.toString());
+    }
     System.out.println("Exiting querying");
 //    for(Object o : visitedSet){
 //      System.out.println(o.toString());
