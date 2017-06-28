@@ -148,7 +148,7 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
-        
+        System.out.println("While Path:" + bundle.getPath() + "," + bundle.getObject().getId());
         Object rootVertex=bundle.getPath().get(0);
         Object currentVertex=bundle.getObject();
         
