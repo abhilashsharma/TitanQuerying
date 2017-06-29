@@ -184,7 +184,35 @@ public class BFSQuery {
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
        System.out.println("Emitted Path:" + bundle.getPath() + "," + bundle.getObject().getId());
-       return true; 
+     Object rootVertex=bundle.getPath().get(0);
+     Object currentVertex=bundle.getObject();
+     
+     Boolean flag=true;
+     BitSet rootVertexBitSet= visitedSet.get(rootVertex);
+     int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
+     if(rootVertexBitSet==null){
+       
+       rootVertexBitSet = new BitSet((Integer)((Vertex)rootVertex).getProperty("patid"));
+       //setting root vertex and currentVertex as visited as rootVertexBitSet is null
+       rootVertexBitSet.set(pseudoId);
+       System.out.println("setting ID:" + ((Vertex)currentVertex).getId());
+       rootVertexBitSet.set(pseudoId);
+       visitedSet.put(rootVertex, rootVertexBitSet);
+     }
+     else{
+       
+       boolean bit=rootVertexBitSet.get(pseudoId);
+       if(bit==true){
+         System.out.println("Loop found");
+         flag =false;
+       }
+       else{
+         System.out.println("setting ID:" + ((Vertex)currentVertex).getId());
+         rootVertexBitSet.set(pseudoId);
+       }
+     }
+
+       return flag; 
       }
     };
     
