@@ -192,9 +192,9 @@ public class BFSQuery {
      int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
      if(rootVertexBitSet==null){
        
-       rootVertexBitSet = new BitSet((Integer)((Vertex)rootVertex).getProperty("patid"));
+       rootVertexBitSet = new BitSet();
        //setting root vertex and currentVertex as visited as rootVertexBitSet is null
-       rootVertexBitSet.set(pseudoId);
+       rootVertexBitSet.set((Integer)((Vertex)rootVertex).getProperty("patid"));
        System.out.println("setting ID:" + ((Vertex)currentVertex).getId());
        rootVertexBitSet.set(pseudoId);
        visitedSet.put(rootVertex, rootVertexBitSet);
