@@ -37,9 +37,10 @@ public class BFSQuery {
 //   graph.massiveModeLoading("./data/youtubeEdges.txt"); 
 //   graph.shutdownMassiveGraph(); 
    BFSQuery titanQuery = new BFSQuery();
+   if(args[1].equals("int")){
    try
    {
-   String FILENAME="/home/abhilash/BFsQueryPatid.txt";
+   String FILENAME=args[0];
    FileReader fr = new FileReader(FILENAME);
    BufferedReader br = new BufferedReader(fr);
 
@@ -51,7 +52,7 @@ public class BFSQuery {
            System.out.println(sCurrentLine);
            String[] strs=sCurrentLine.trim().split(",");
            String key=strs[0].replaceAll("^\"|\"$", "");;
-           int val=Integer.parseInt(strs[1]);
+           Object val=Integer.parseInt(strs[1]);
            int depth= Integer.parseInt(strs[2]);
            titanQuery.BfsMultiQuery(key,val,depth);
    }
@@ -59,6 +60,32 @@ public class BFSQuery {
    }catch(Exception e){
      
    }
+   }
+   else{//assuming it is string
+     try
+     {
+     String FILENAME=args[0];
+     FileReader fr = new FileReader(FILENAME);
+     BufferedReader br = new BufferedReader(fr);
+
+     String sCurrentLine;
+
+     br = new BufferedReader(new FileReader(FILENAME));
+
+     while ((sCurrentLine = br.readLine()) != null) {
+             System.out.println(sCurrentLine);
+             String[] strs=sCurrentLine.trim().split(",");
+             String key=strs[0].replaceAll("^\"|\"$", "");;
+             Object val=strs[1];
+             int depth= Integer.parseInt(strs[2]);
+             titanQuery.BfsMultiQuery(key,val,depth);
+     }
+     
+     }catch(Exception e){
+       
+     }     
+   }
+   
    
    
    //Testing and Debugging
