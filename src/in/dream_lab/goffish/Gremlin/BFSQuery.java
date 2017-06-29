@@ -37,32 +37,32 @@ public class BFSQuery {
 //   graph.massiveModeLoading("./data/youtubeEdges.txt"); 
 //   graph.shutdownMassiveGraph(); 
    BFSQuery titanQuery = new BFSQuery();
-//   try
-//   {
-//   String FILENAME="/home/abhilash/BFsQueryPatid.txt";
-//   FileReader fr = new FileReader(FILENAME);
-//   BufferedReader br = new BufferedReader(fr);
-//
-//   String sCurrentLine;
-//
-//   br = new BufferedReader(new FileReader(FILENAME));
-//
-//   while ((sCurrentLine = br.readLine()) != null) {
-//           System.out.println(sCurrentLine);
-//           String[] strs=sCurrentLine.trim().split(",");
-//           String key=strs[0].replaceAll("^\"|\"$", "");;
-//           int val=Integer.parseInt(strs[1]);
-//           int depth= Integer.parseInt(strs[2]);
-//           titanQuery.BfsMultiQuery(key,val,depth);
-//   }
-//   
-//   }catch(Exception e){
-//     
-//   }
+   try
+   {
+   String FILENAME="/home/abhilash/BFsQueryPatid.txt";
+   FileReader fr = new FileReader(FILENAME);
+   BufferedReader br = new BufferedReader(fr);
+
+   String sCurrentLine;
+
+   br = new BufferedReader(new FileReader(FILENAME));
+
+   while ((sCurrentLine = br.readLine()) != null) {
+           System.out.println(sCurrentLine);
+           String[] strs=sCurrentLine.trim().split(",");
+           String key=strs[0].replaceAll("^\"|\"$", "");;
+           int val=Integer.parseInt(strs[1]);
+           int depth= Integer.parseInt(strs[2]);
+           titanQuery.BfsMultiQuery(key,val,depth);
+   }
+   
+   }catch(Exception e){
+     
+   }
    
    
    //Testing and Debugging
-   titanQuery.BfsMultiQuery("patid",4564956,3);
+//   titanQuery.BfsMultiQuery("patid",4564956,3);
 //   titanQuery.TestBfsQuery("patid",4564956,3);
    
   
@@ -148,7 +148,7 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
-        System.out.println("While Path:" + bundle.getPath() + "," + bundle.getObject().getId());
+//        System.out.println("While Path:" + bundle.getPath() + "," + bundle.getObject().getId());
 //        Object rootVertex=bundle.getPath().get(0);
 //        Object currentVertex=bundle.getObject();
 //        
@@ -183,7 +183,7 @@ public class BFSQuery {
 
       @Override
       public Boolean compute(LoopBundle<Vertex> bundle) {
-       System.out.println("Emitted Path:" + bundle.getPath() + "," + bundle.getObject().getId());
+//       System.out.println("Emitted Path:" + bundle.getPath() + "," + bundle.getObject().getId());
      Object rootVertex=bundle.getPath().get(0);
      Object currentVertex=bundle.getObject();
      
@@ -195,7 +195,7 @@ public class BFSQuery {
        rootVertexBitSet = new BitSet();
        //setting root vertex and currentVertex as visited as rootVertexBitSet is null
        rootVertexBitSet.set((Integer)((Vertex)rootVertex).getProperty("patid"));
-       System.out.println("setting ID:" + ((Vertex)currentVertex).getId());
+//       System.out.println("setting ID:" + ((Vertex)currentVertex).getId());
        rootVertexBitSet.set(pseudoId);
        visitedSet.put(rootVertex, rootVertexBitSet);
      }
@@ -203,11 +203,11 @@ public class BFSQuery {
        
        boolean bit=rootVertexBitSet.get(pseudoId);
        if(bit==true){
-         System.out.println("Loop found");
+//         System.out.println("Loop found");
          flag =false;
        }
        else{
-         System.out.println("setting ID:" + ((Vertex)currentVertex).getId());
+//         System.out.println("setting ID:" + ((Vertex)currentVertex).getId());
          rootVertexBitSet.set(pseudoId);
        }
      }
