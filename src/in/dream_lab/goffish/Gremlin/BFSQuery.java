@@ -105,7 +105,7 @@ public class BFSQuery {
   
   public BFSQuery() { 
 //      titanGraph = TitanFactory.build().set("storage.backend","cassandra").set("storage.cassandra.keyspace","recreated").set("storage.connection-timeout","5000000").set("storage.setup-wait","2000000").set("index.search.backend","elasticsearch").set("storage.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15").set("index.search.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15").set("cache.db-cache","true").open();
-    titanGraph = TitanFactory.build().set("storage.backend","cassandra").set("storage.cassandra.keyspace","recreated").set("index.search.backend","elasticsearch").set("storage.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15").set("index.search.hostname","10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15").open();
+    titanGraph = TitanFactory.build().set("storage.backend","cassandra").set("storage.cassandra.keyspace","titan").set("index.search.backend","elasticsearch").set("storage.hostname","192.168.0.23,192.168.0.24,192.168.0.26,192.168.0.27").set("index.search.hostname","192.168.0.27,192.168.0.28,192.168.0.29,192.168.0.30").open();
 //    conf = new BaseConfiguration();
 //    conf.setProperty("storage.backend","cassandra");
 //    conf.setProperty("storage.cassandra.keyspace","recreated");
@@ -216,12 +216,12 @@ public class BFSQuery {
      
      Boolean flag=true;
      BitSet rootVertexBitSet= visitedSet.get(rootVertex);
-     int pseudoId=(Integer)((Vertex)currentVertex).getProperty("patid");
+     int pseudoId=(Integer)((Vertex)currentVertex).getProperty("rid");
      if(rootVertexBitSet==null){
        
        rootVertexBitSet = new BitSet();
        //setting root vertex and currentVertex as visited as rootVertexBitSet is null
-       rootVertexBitSet.set((Integer)((Vertex)rootVertex).getProperty("patid"));
+       rootVertexBitSet.set((Integer)((Vertex)rootVertex).getProperty("rid"));
 //       System.out.println("setting ID:" + ((Vertex)currentVertex).getId());
        rootVertexBitSet.set(pseudoId);
        visitedSet.put(rootVertex, rootVertexBitSet);

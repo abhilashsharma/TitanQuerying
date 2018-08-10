@@ -49,14 +49,14 @@
 		<dependency>
 			<groupId>com.thinkaurelius.titan</groupId>
 			<artifactId>titan-core</artifactId>
-			<version>0.5.4</version>
+			<version>1.0.0</version>
 		</dependency>
 		
 		<!-- Titan DB Cassandra -->
 		<dependency>
 			<groupId>com.thinkaurelius.titan</groupId>
 			<artifactId>titan-cassandra</artifactId>
-			<version>0.5.4</version>
+			<version>1.0.0</version>
 		</dependency>
 		
 <dependency>
@@ -68,7 +68,7 @@
 <dependency>
     <groupId>com.thinkaurelius.titan</groupId>
     <artifactId>titan-es</artifactId>
-    <version>0.5.4</version>
+    <version>1.0.0</version>
     <scope>test</scope>
 </dependency>
 		
